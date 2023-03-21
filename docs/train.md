@@ -1,6 +1,5 @@
 ## Use Active3DPose with RLlib
 
----
 We use [Ray RLlib](https://docs.ray.io/en/latest/rllib/index.html#) to train RL agents to control the movement of
 aerial cameras. Please follow the step belows if you wish to reproduce the results shown in our paper:
 

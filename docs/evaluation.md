@@ -1,4 +1,4 @@
-### Evaluate Policy and Visualization
+## Evaluate Policy and Visualization
 Below is a tutorial on how to evaluate a policy and visualize the results.
 
 ### Step 1: Evaluate the policy
