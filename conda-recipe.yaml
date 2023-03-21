@@ -1,0 +1,47 @@
+# Create virtual environment with command: conda env create --file conda-recipe.yaml
+
+name: active-pose
+
+channels:
+  - pytorch
+  - nvidia/label/cuda-11.7.1
+  - defaults
+  - conda-forge
+
+dependencies:
+  - python = 3.9
+  - pip
+  - pytorch::pytorch=1.13.1
+  - pytorch::pytorch-mutex = *=*cuda*
+
+  - gym
+
+  - nvidia/label/cuda-11.7.1::cuda-toolkit = 11.7
+  - cudnn
+
+  - numpy
+  - numba
+  - matplotlib-base
+  - cupy
+  - tqdm
+  - tensorboard
+  - av==9.2.0
+  - zarr
+  - pyqt
+  - pyqtgraph >= 0.12
+  - pyopengl
+  - pims
+  - colorcet
+  - json_tricks
+  - h5py
+  - easydict
+  - filelock
+  - wandb
+
+  - pip:
+      - gdown
+      - opencv-python
+      - unrealcv
+      - pymvg
+      - ray[rllib] == 1.13.0
+      - yacs

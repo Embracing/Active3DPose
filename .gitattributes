@@ -1,0 +1,13 @@
+* text eol=lf
+
+*.png binary
+*.jpg binary
+*.gif binary
+*.zarr binary
+*.zip binary
+*.npy binary
+*.npz binary
+*.mp4 binary
+*.avi binary
+*.mov binary
+*.mkv binary

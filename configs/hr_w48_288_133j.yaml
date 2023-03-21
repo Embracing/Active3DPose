@@ -1,0 +1,141 @@
+GPUS: "0"
+BACKBONE_MODEL: hrnet
+MODEL: multiview_pose_hrnet
+DATA_DIR: ""
+OUTPUT_DIR: "output"
+LOG_DIR: "log"
+WORKERS: 8
+PRINT_FREQ: 100
+
+DATASET:
+  TRAIN_DATASET: coco_mpii_lsp_pkuclass
+  TEST_DATASET: mpii
+  ROOT: "data/"
+  TRAIN_SUBSET: train
+  TEST_SUBSET: valid
+  DATA_FORMAT: ""
+  IF_SAMPLE: false
+  COCO_SCALE_FACTOR: 0.3
+  COCO_ROT_FACTOR: 40
+  COCO_FLIP: true
+  MPII_SCALE_FACTOR: 0.25
+  MPII_ROT_FACTOR: 30
+  MPII_FLIP: true
+  # LSP_SCALE_FACTOR: 0.25
+  # LSP_ROT_FACTOR: 30
+  # LSP_FLIP: true
+  # PKUCLASS_SCALE_FACTOR: 0.25
+  # PKUCLASS_ROT_FACTOR: 30
+  # PKUCLASS_FLIP: true
+  COLOR_JITTER: true
+NETWORK:
+  PRETRAINED: "models/pytorch/pose_mpii/pose_hrnet_w32_256x256.pth"
+  TARGET_TYPE: gaussian
+  AGGRE: false
+  HEATMAP_SIZE:
+    - 72
+    - 72
+  IMAGE_SIZE:
+    - 288
+    - 288
+  NUM_JOINTS: 133
+  SIGMA: 2
+MODEL_EXTRA:
+  PRETRAINED_LAYERS:
+    - "conv1"
+    - "bn1"
+    - "conv2"
+    - "bn2"
+    - "layer1"
+    - "transition1"
+    - "stage2"
+    - "transition2"
+    - "stage3"
+    - "transition3"
+    - "stage4"
+  FINAL_CONV_KERNEL: 1
+  STAGE2:
+    NUM_MODULES: 1
+    NUM_BRANCHES: 2
+    BLOCK: BASIC
+    NUM_BLOCKS:
+      - 4
+      - 4
+    NUM_CHANNELS:
+      - 48
+      - 96
+    FUSE_METHOD: SUM
+  STAGE3:
+    NUM_MODULES: 4
+    NUM_BRANCHES: 3
+    BLOCK: BASIC
+    NUM_BLOCKS:
+      - 4
+      - 4
+      - 4
+    NUM_CHANNELS:
+      - 48
+      - 96
+      - 192
+    FUSE_METHOD: SUM
+  STAGE4:
+    NUM_MODULES: 3
+    NUM_BRANCHES: 4
+    BLOCK: BASIC
+    NUM_BLOCKS:
+      - 4
+      - 4
+      - 4
+      - 4
+    NUM_CHANNELS:
+      - 48
+      - 96
+      - 192
+      - 384
+    FUSE_METHOD: SUM
+LOSS:
+  USE_TARGET_WEIGHT: true
+  MSE_LOSS_WEIGHT: 1
+  CONSISTENT_LOSS_WEIGHT: 0.01
+TRAIN:
+  BATCH_SIZE: 8
+  SHUFFLE: true
+  BEGIN_EPOCH: 0
+  END_EPOCH: 140
+  RESUME: false
+  RESUME_PATH: "output/coco_mpii_lsp_pkuclass/multiview_pose_hrnet_50/140e_32batch_color_jitter/checkpoint.pth.tar"
+  OPTIMIZER: adam
+  LR: 0.001
+  LR_FACTOR: 0.1
+  LR_STEP:
+    - 90
+    - 120
+  WD: 0.0001
+  GAMMA1: 0.99
+  GAMMA2: 0.0
+  MOMENTUM: 0.9
+  NESTEROV: false
+TEST:
+  BATCH_SIZE: 8
+  BBOX_FILE: ""
+  BBOX_THRE: 1.0
+  DETECTOR: fpn_dcn
+  DETECTOR_DIR: ""
+  IMAGE_THRE: 0.0
+  IN_VIS_THRE: 0.2
+  MATCH_IOU_THRE: 0.3
+  MODEL_FILE: "checkpoints/hrnet_w48_coco_wholebody_384x288-6e061c6a_20200922.pth"
+  NMS_THRE: 1.0
+  OKS_THRE: 0.9
+  FLIP_TEST: false
+  POST_PROCESS: true
+  SHIFT_HEATMAP: true
+  USE_GT_BBOX: true
+  FUSE_OUTPUT: false
+DEBUG:
+  DEBUG: true
+  SAVE_BATCH_IMAGES_GT: true
+  SAVE_BATCH_IMAGES_PRED: true
+  SAVE_HEATMAPS_GT: true
+  SAVE_HEATMAPS_PRED: true
+  SAVE_ALL_PREDS: false

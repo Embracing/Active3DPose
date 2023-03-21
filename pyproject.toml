@@ -1,0 +1,15 @@
+[tool.black]
+safe = true
+line-length = 100
+skip-string-normalization = true
+target-version = ["py39", "py310", "py311"]
+
+[tool.isort]
+atomic = true
+profile = "black"
+src_paths = ["activepose", "run"]
+extra_standard_library = ["typing_extensions"]
+indent = 4
+line_length = 100
+lines_after_imports = 2
+multi_line_output = 3
