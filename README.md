@@ -5,6 +5,9 @@
   <img width="100%" src="./figures/concept_art.jpg" alt="Concept Art">
 </p>
 
+
+---
+
 This code supplements the following paper:
 
 > [Proactive Multi-Camera Collaboration for 3D Human Pose Estimation (ICLR 2023)](https://openreview.net/pdf?id=CPIy9TWFYBG)
@@ -27,8 +30,9 @@ This code supplements the following paper:
   <a href="https://github.com/Embracing/Active3DPose/blob/main/LICENSE">License</a>
 </p>
 
---------------------------------------------------------------------------------
 
+
+--------------------------------------------------------------------------------
 ### TL;DR
 
 - We simulate human crowds and aerial cameras with UE4 (currently support 4 different environment settings).
@@ -37,9 +41,23 @@ This code supplements the following paper:
 - We build a dedicated tool to evaluate and visualize the performance of the camera agents.
 
 
-### Getting Started
+### Demo
+
+<table class="center">
+<tr>
+<td><img src="docs/school_gym_test_demo.gif"/></td>
+<td><img src="docs/building.gif"/></td>
+</tr>
+<tr>
+  <td width=25% style="text-align:center;"><b>SchoolGym:</b> 5 Cameras, 7 Humans</td>
+  <td width=25% style="text-align:center;"><b>UrbanStreet:</b> 5 Cameras, 7 Humans</td>
+</tr>
+
+</table>
 
 --------------------------------------------------------------------------------
+
+### Getting Started
 
 #### Project Directory
 
