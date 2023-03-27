@@ -49,8 +49,8 @@ This code supplements the following paper:
 <td><img src="docs/building.gif"/></td>
 </tr>
 <tr>
-  <td width=25% style="text-align:center;"><b>SchoolGym:</b> 5 Cameras, 7 Humans</td>
-  <td width=25% style="text-align:center;"><b>UrbanStreet:</b> 5 Cameras, 7 Humans</td>
+  <td width=25% align="center"><b>SchoolGym:</b> 5 Cameras, 6 Humans</td>
+  <td width=25% align="center"><b>UrbanStreet:</b> 5 Cameras, 6 Humans</td>
 </tr>
 
 </table>
