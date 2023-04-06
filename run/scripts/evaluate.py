@@ -118,12 +118,14 @@ else:
 if cmd_args.num_humans is not None:
     cp_config['env_config']['args'].num_humans = cmd_args.num_humans
 
+# # =============================================================================
+# # Uncomment to enable EMA, action noise and safe distance if your model isn't train with them
 # cp_config['env_config']['ema_action'] = {
 #         'use': True,
 #         'args': {
 #             'k_EMA': 0.5,
 #             'action_noise': [0.8, 1.2],
-#             'add_extra_force': False,
+#             'add_extra_force': True,
 #             'force_configs': {
 #                 'F': 30,
 #                 'human_safe_distance' : 150.,
